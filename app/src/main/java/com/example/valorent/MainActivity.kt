@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
+import com.example.valorent.UiScreens.AgentListScreen
 import com.example.valorent.ViewModal.ValorentViewModal
 import com.example.valorent.ui.theme.ValorentTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val viewModel : ValorentViewModal by  viewModels()
-
+            AgentListScreen ( viewModel )
         }
     }
 }
