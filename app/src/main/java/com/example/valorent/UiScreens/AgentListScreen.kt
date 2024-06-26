@@ -6,11 +6,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.valorent.ViewModal.ApiResponse
 import com.example.valorent.ViewModal.ValorentViewModal
 
 @Composable
-fun AgentListScreen ( viewModal: ValorentViewModal ){
+fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController ){
 
     var apiState = viewModal.apiResponseState
 
@@ -20,11 +21,10 @@ fun AgentListScreen ( viewModal: ValorentViewModal ){
             LazyColumn(){
                 items( apiState.agentList.data){
                         agentCard ->
-                        AgentCard(agentData = agentCard)
+                        AgentCard(agentData = agentCard, navController , viewModal)
                 }
             }
         }
-
         is ApiResponse.Error -> {
             Text(text = apiState.error.toString(), fontSize = 25.sp , textAlign = TextAlign.Center )
         }
@@ -32,9 +32,6 @@ fun AgentListScreen ( viewModal: ValorentViewModal ){
             Text(text = "Loading", fontSize = 30.sp , textAlign = TextAlign.Center)
         }
     }
-
-
-
 }
 
 
