@@ -21,13 +21,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.valorent.DataLayer.AgentApi.Data
+import com.example.valorent.DataLayer.WeaponApi.WeaponData
 import com.example.valorent.ViewModal.ValorentViewModal
 import com.example.valorent.navigation.Screen
 import com.example.valorent.ui.theme.lightBlack
 
 
 @Composable
-fun AgentCard( agentData : Data , navController: NavController , viewModal: ValorentViewModal){
+fun AgentCard(agentData : Data, navController: NavController, viewModal: ValorentViewModal ){
     Box(modifier = Modifier
         .padding(10.dp)
         .height(200.dp)

@@ -12,6 +12,7 @@ import com.example.valorent.UiScreens.AgentDetailScreen
 import com.example.valorent.UiScreens.AgentListScreen
 import com.example.valorent.ViewModal.ValorentViewModal
 import com.example.valorent.navigation.Screen
+import com.example.valorent.ui.theme.ValorentTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -21,15 +22,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val viewModel : ValorentViewModal by  viewModels()
-
-            val navController = rememberNavController()
-          NavHost(navController = navController, startDestination = Screen.HOME.route ) {
-             composable(route = Screen.HOME.route) {
-                 AgentListScreen ( viewModel,navController )
-                }
-              composable(route = Screen.AgentDetail.route){
-                AgentDetailScreen(viewModal = viewModel)
+            ValorentTheme {
+                val viewModel : ValorentViewModal by  viewModels()
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = Screen.HOME.route ) {
+                    composable(route = Screen.HOME.route) {
+                        AgentListScreen ( viewModel,navController )
+                    }
+                    composable(route = Screen.AgentDetail.route){
+                        AgentDetailScreen(viewModal = viewModel)
+                    }
                 }
             }
         }

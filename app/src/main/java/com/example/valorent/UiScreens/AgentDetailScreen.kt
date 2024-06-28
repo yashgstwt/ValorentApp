@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,6 +38,7 @@ import coil.compose.AsyncImage
 import com.example.valorent.ViewModal.ValorentViewModal
 import com.example.valorent.ui.theme.ValorentFont
 import com.example.valorent.ui.theme.darkRed
+import com.example.valorent.ui.theme.lightBlack
 import com.example.valorent.ui.theme.valoBackground
 import java.util.Locale
 
@@ -66,24 +68,53 @@ val data = viewModal.selectedAgent
                 fontStyle = FontStyle.Italic
             )
         Spacer(modifier = Modifier.size(20.dp))
+        Text(text = "Abilities" ,
+            fontSize = 20.sp ,
+            fontWeight = FontWeight.Bold ,
+            color = Color.White ,
+            modifier = Modifier.padding(start = 10.dp),
+            fontFamily = ValorentFont
+        )
+
         LazyRow(modifier = Modifier
             .height(150.dp)
-            .padding(start = 10.dp)) {
+            .padding(start = 10.dp)
+        ,
+        ) {
             items(data?.abilities!!){
                 abilities ->
-                //viewModal.selectedAbility= abilities.description[0].toString()
-                Column(modifier= Modifier
-                    .size(150.dp, 100.dp)
+                viewModal.selectedAbility= data.abilities[0].description
+                Column(modifier= Modifier.padding(end = 5.dp)
+                    .clip(RoundedCornerShape(20.dp))
                     .clickable { viewModal.selectedAbility = abilities.description }
                 ) {
-                    AsyncImage(model =abilities.displayIcon , contentDescription ="" , modifier = Modifier.size(height = 100.dp , width = 100.dp), contentScale = ContentScale.Fit)
-                   // Spacer(modifier = Modifier.size(10.dp))
-                    Text(text = abilities.displayName, modifier = Modifier.size(height = 50.dp, width = 100.dp), fontSize = 15.sp, color = Color.White)
+                    AbilityCard(abilities.displayName ,abilities.displayIcon)
                 }
             }
         }
         Spacer(modifier = Modifier.size(10.dp))
-        Text(text = viewModal.selectedAbility.toString(), fontSize = 20.sp , fontStyle = FontStyle.Italic , color = Color.White)
+        Text(text = viewModal.selectedAbility.toString(),
+            fontSize = 20.sp ,
+            fontStyle = FontStyle.Italic ,
+            color = Color.White ,
+            modifier = Modifier.padding( 20.dp)
+        )
+    }
+}
+
+@Composable
+fun AbilityCard(name: String , image : String ){
+    Column(modifier = Modifier.background(lightBlack)
+        .padding(5.dp)
+    ){
+        AsyncImage(model = image,
+            contentDescription =""
+            ,modifier = Modifier.size(100.dp).padding(5.dp) ,
+            contentScale = ContentScale.Crop,
+            alignment = Alignment.Center
+        )
+
+        Text(text = name , fontSize = 20.sp , color = Color.White, modifier = Modifier.padding(8.dp))
     }
 }
 

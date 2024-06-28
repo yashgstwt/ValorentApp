@@ -1,6 +1,6 @@
 package com.example.valorent.DI
 
-import com.example.valorent.DataLayer.AgentApi.ValorentApi
+import com.example.valorent.DataLayer.ValorentApi
 import com.example.valorent.Repository.ValorentRepository
 import dagger.Module
 import dagger.Provides
