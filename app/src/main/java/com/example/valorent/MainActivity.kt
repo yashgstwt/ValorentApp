@@ -10,6 +10,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.valorent.UiScreens.AgentDetailScreen
 import com.example.valorent.UiScreens.AgentListScreen
+import com.example.valorent.UiScreens.SkinListScreen
+import com.example.valorent.UiScreens.WeaponDetail
+import com.example.valorent.UiScreens.WeaponSkinCard
 import com.example.valorent.ViewModal.ValorentViewModal
 import com.example.valorent.navigation.Screen
 import com.example.valorent.ui.theme.ValorentTheme
@@ -31,6 +34,12 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(route = Screen.AgentDetail.route){
                         AgentDetailScreen(viewModal = viewModel)
+                    }
+                    composable(route = Screen.SkinListScreen.route){
+                        SkinListScreen(viewModel,navController)
+                    }
+                    composable(route = Screen.WeaponDetail.route){
+                        WeaponDetail(viewModel,navController)
                     }
                 }
             }

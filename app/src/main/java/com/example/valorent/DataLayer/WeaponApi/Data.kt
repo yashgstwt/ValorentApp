@@ -10,5 +10,5 @@ data class WeaponData(
     val shopData: ShopData,
     val skins: List<Skin>,
     val uuid: String,
-    val weaponStats: WeaponStats
+    val weaponStats: WeaponStats // 8 (5+)properties
 )

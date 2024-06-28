@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.valorent.DataLayer.AgentApi.Data
+import com.example.valorent.DataLayer.WeaponApi.WeaponData
 import com.example.valorent.Repository.ValorentRepository
 import com.example.valorent.ViewModal.AgentApiResponse.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,6 +24,8 @@ class ValorentViewModal  @Inject constructor (private val repository: ValorentRe
         private set
 
     var selectedAgent: Data? by mutableStateOf(null)
+
+    var selectedWeapon : WeaponData? by mutableStateOf(null)
 
     var selectedAbility:String? by mutableStateOf(null)
 
