@@ -22,13 +22,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.valorent.DataLayer.WeaponApi.WeaponData
+import com.example.valorent.ViewModal.ValorentViewModal
 import com.example.valorent.navigation.Screen
 import com.example.valorent.ui.theme.ValorentFont
 import com.example.valorent.ui.theme.lightBlack
 import com.example.valorent.ui.theme.valoBackground
 
 @Composable
-fun WeaponCard(Weapon : WeaponData, navController: NavController){
+fun WeaponCard(Weapon : WeaponData, navController: NavController,viewModal: ValorentViewModal){
 
       Column(modifier = Modifier
           .clip(RoundedCornerShape(10.dp))
@@ -39,6 +40,7 @@ fun WeaponCard(Weapon : WeaponData, navController: NavController){
           .wrapContentSize(Alignment.Center)
           .clickable {
               navController.navigate(Screen.WeaponDetail.route)
+              viewModal.selectedWeapon = Weapon
           },
           horizontalAlignment = Alignment.CenterHorizontally,
           verticalArrangement = Arrangement.Center

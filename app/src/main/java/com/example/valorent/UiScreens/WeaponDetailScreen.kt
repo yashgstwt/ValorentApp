@@ -18,6 +18,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,14 +50,8 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
     val headingFontSize = 30.sp
 
     Scaffold(floatingActionButton = {
-        FloatingActionButton(onClick = { navController.navigate(Screen.SkinListScreen.route) },modifier= Modifier.background(darkRed)) {
-         Column(horizontalAlignment = Alignment.CenterHorizontally , verticalArrangement = Arrangement.Center){
-                AsyncImage(
-                    model = viewModal.selectedWeapon?.shopData?.image,
-                    contentDescription = ""
-                )
-             Text(text = "SKINS", fontFamily = ValorentFont)
-            }
+        FloatingActionButton(onClick = { navController.navigate(Screen.SkinListScreen.route) },modifier= Modifier.size(80.dp) , containerColor = darkRed) {
+            Icon(painter = painterResource(id =R.drawable.gun ), contentDescription = "")
         }
     }) {padding ->
         Column(
@@ -76,9 +71,9 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
             ) {
                 Text(
                     text = viewModal.selectedWeapon?.displayName ?: "No Name",
-                    fontSize = 40.sp,
+                    fontSize = 50.sp,
                     textAlign = TextAlign.End,
-                    modifier = Modifier.padding(10.dp),
+                    modifier = Modifier.padding(30.dp),
                     fontFamily = ValorentFont
                 )
 
@@ -107,9 +102,9 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
             )
             Column(
                 modifier = Modifier
+                    .padding(20.dp)
                     .background(lightBlack)
                     .clip(RoundedCornerShape(15.dp))
-                    .padding(20.dp)
             ) {
                 Text(
                     text = "Fire Rate :${viewModal.selectedWeapon?.weaponStats?.fireRate} ",
@@ -146,7 +141,6 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
                     fontSize = infoFontSize,
                     fontStyle = FontStyle.Italic
                 )
-
             }
             Text(
                 text = "DamageRanges",
@@ -157,46 +151,38 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
             )
             Column(
                 modifier = Modifier
+                    .padding(20.dp)
                     .background(lightBlack)
                     .clip(RoundedCornerShape(15.dp))
-                    .padding(20.dp)
+
             ) {
                 Text(
-                    text = "RangeStartMeters :${
-                        viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(
-                            0
-                        )?.rangeStartMeters
-                    } ", fontSize = infoFontSize, fontStyle = FontStyle.Italic
+                    text = "RangeStartMeters :${viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(0)?.rangeStartMeters} ",
+                    fontSize = infoFontSize,
+                    fontStyle = FontStyle.Italic
                 )
                 Text(
-                    text = "RangeEndMeters :${
-                        viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(
-                            0
-                        )?.rangeEndMeters
-                    } ", fontSize = infoFontSize, fontStyle = FontStyle.Italic
+                    text = "RangeEndMeters :${viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(0)?.rangeEndMeters} ",
+                    fontSize = infoFontSize,
+                    fontStyle = FontStyle.Italic
                 )
                 Text(
-                    text = "HeadDamage :${
-                        viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(
-                            0
-                        )?.headDamage
-                    } ", fontSize = infoFontSize, fontStyle = FontStyle.Italic
+                    text = "HeadDamage :${viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(0)?.headDamage} ",
+                    fontSize = infoFontSize,
+                    fontStyle = FontStyle.Italic
                 )
                 Text(
                     text = "BodyDamage :${
-                        viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(
-                            0
-                        )?.bodyDamage
-                    } ", fontSize = infoFontSize, fontStyle = FontStyle.Italic
+                        viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(0)?.bodyDamage} ",
+                    fontSize = infoFontSize,
+                    fontStyle = FontStyle.Italic
                 )
                 Text(
                     text = "LegDamage :${viewModal.selectedWeapon?.weaponStats?.damageRanges?.get(0)?.legDamage} ",
                     fontSize = infoFontSize,
                     fontStyle = FontStyle.Italic
                 )
-
             }
         }
     }
-
 }

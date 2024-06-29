@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.valorent.DataLayer.AgentApi.Data
+import com.example.valorent.DataLayer.WeaponApi.Skin
 import com.example.valorent.DataLayer.WeaponApi.WeaponData
 import com.example.valorent.Repository.ValorentRepository
 import com.example.valorent.ViewModal.AgentApiResponse.*
@@ -29,6 +30,7 @@ class ValorentViewModal  @Inject constructor (private val repository: ValorentRe
 
     var selectedAbility:String? by mutableStateOf(null)
 
+    var selectedWeaponSkin : Skin? by mutableStateOf(null)
     //state for list in home screen i.e agent / Weapon
     var currentList :Int by mutableIntStateOf(0)
 

@@ -13,6 +13,7 @@ import com.example.valorent.UiScreens.AgentListScreen
 import com.example.valorent.UiScreens.SkinListScreen
 import com.example.valorent.UiScreens.WeaponDetail
 import com.example.valorent.UiScreens.WeaponSkinCard
+import com.example.valorent.UiScreens.WeaponSkinDetail
 import com.example.valorent.ViewModal.ValorentViewModal
 import com.example.valorent.navigation.Screen
 import com.example.valorent.ui.theme.ValorentTheme
@@ -41,6 +42,9 @@ class MainActivity : ComponentActivity() {
                     composable(route = Screen.WeaponDetail.route){
                         WeaponDetail(viewModel,navController)
                     }
+//                    composable(Screen.SkinDetail.route){
+//                        WeaponSkinDetail(viewModel)
+//                    }
                 }
             }
         }

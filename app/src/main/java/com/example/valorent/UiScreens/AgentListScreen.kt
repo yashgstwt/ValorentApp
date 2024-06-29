@@ -67,7 +67,7 @@ fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController
                         LazyColumn(modifier = Modifier.padding(paddingValues)){
                            items(weaponApiState.weaponList.data){
                                    WeaponCard ->
-                               WeaponCard(WeaponCard , navController)
+                               WeaponCard(WeaponCard , navController, viewModal)
                             }
                         }
                     }
