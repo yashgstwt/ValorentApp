@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -49,7 +50,7 @@ fun WeaponSkinCard(Skin : Skin, navController: NavController , viewModal: Valore
         verticalArrangement = Arrangement.Center
 
     ){
-        AsyncImage(model =Skin.displayIcon  , contentDescription = "" , alignment = Alignment.BottomStart)
+        AsyncImage(model =Skin.displayIcon  , contentDescription = "" , alignment = Alignment.BottomStart , onSuccess = {} )
         Spacer(modifier = Modifier.height(10.dp) )
         Text(text = Skin.displayName ?: "g   " ,
             fontSize = 30.sp ,
@@ -64,14 +65,17 @@ fun WeaponSkinCard(Skin : Skin, navController: NavController , viewModal: Valore
 
 @Composable
 fun SkinListScreen(viewModal: ValorentViewModal, navController: NavController){
-
-    LazyColumn(modifier = Modifier
-        .fillMaxSize()
-        .background(valoBackground)) {
-        viewModal.selectedWeapon?.let {
-            items(it.skins){
-                skins->
-                WeaponSkinCard(skins, navController , viewModal)
+    Scaffold (
+        topBar = { TopAppBar("SKINS") }){
+padding ->
+        LazyColumn(modifier = Modifier.padding(padding)
+            .fillMaxSize()
+            .background(valoBackground)) {
+            viewModal.selectedWeapon?.let {
+                items(it.skins){
+                        skins->
+                    WeaponSkinCard(skins, navController , viewModal)
+                }
             }
         }
     }

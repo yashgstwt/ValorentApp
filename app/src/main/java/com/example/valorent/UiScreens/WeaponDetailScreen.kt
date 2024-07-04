@@ -1,5 +1,9 @@
 package com.example.valorent.UiScreens
 
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.ScrollableState
@@ -22,9 +26,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -48,6 +57,13 @@ import com.example.valorent.ui.theme.valoBackground
 fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
     val infoFontSize = 20.sp
     val headingFontSize = 30.sp
+    var isDisplayed by remember {
+        mutableStateOf(false)
+    }
+    val transitionY by animateFloatAsState(targetValue = if (isDisplayed) 170f else 100f  , animationSpec = infiniteRepeatable(
+        animation = tween(durationMillis = 4000),
+        repeatMode = RepeatMode.Reverse)
+    )
 
     Scaffold(floatingActionButton = {
         FloatingActionButton(onClick = { navController.navigate(Screen.SkinListScreen.route) },modifier= Modifier.size(80.dp) , containerColor = darkRed) {
@@ -81,7 +97,8 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
                     model = viewModal.selectedWeapon?.displayIcon,
                     contentDescription = " ",
                     contentScale = ContentScale.Inside,
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.align(Alignment.Center).graphicsLayer(translationY = transitionY, translationX = 80f),
+                    onSuccess = {  isDisplayed = true  },
                 )
             }
             Text(
@@ -102,9 +119,10 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
             )
             Column(
                 modifier = Modifier
-                    .padding(20.dp)
-                    .background(lightBlack)
                     .clip(RoundedCornerShape(15.dp))
+                    .background(lightBlack)
+                    .padding(20.dp)
+
             ) {
                 Text(
                     text = "Fire Rate :${viewModal.selectedWeapon?.weaponStats?.fireRate} ",
@@ -151,9 +169,10 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
             )
             Column(
                 modifier = Modifier
-                    .padding(20.dp)
-                    .background(lightBlack)
                     .clip(RoundedCornerShape(15.dp))
+                    .background(lightBlack)
+                    .padding(20.dp)
+
 
             ) {
                 Text(

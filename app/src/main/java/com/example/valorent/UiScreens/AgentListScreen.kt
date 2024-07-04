@@ -38,7 +38,7 @@ fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController
     val weaponApiState = viewModal.weaponApiResponseState
 
     Scaffold (
-        topBar = { TopAppBar() },
+        topBar = { TopAppBar("VALORENT") },
         bottomBar = { BottomAppBar(viewModal) }
     ){ paddingValues ->
 
@@ -46,7 +46,9 @@ fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController
             0 -> {
                 when(agentApiState){
                     is AgentApiResponse.Success ->  {
-                        LazyColumn(modifier = Modifier.padding(paddingValues) .background(valoBackground)){
+                        LazyColumn(modifier = Modifier
+                            .padding(paddingValues)
+                            .background(valoBackground)){
                             items( agentApiState.agentList.data){
                                     agentCard ->
                                 AgentCard(agentData = agentCard, navController , viewModal)
@@ -57,7 +59,7 @@ fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController
                         Text(text = agentApiState.error.toString(), fontSize = 25.sp , textAlign = TextAlign.Center )
                     }
                     AgentApiResponse.Loading ->{
-                        Text(text = "Loading", fontSize = 30.sp , textAlign = TextAlign.Center)
+                   SplashScreen()
                     }
                 }
             }
@@ -79,10 +81,7 @@ fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController
                     }
 
                     is WeaponApiResponse.Loading -> {
-                        Text(text =  "Loading pls wait",
-                            fontSize = 25.sp ,
-                            textAlign = TextAlign.Center
-                        )
+                        Loading()
                     }
                 }
             }
@@ -91,7 +90,7 @@ fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController
 }
 
 @Composable
-fun TopAppBar(){
+fun TopAppBar(text :String ){
     Box(modifier = Modifier
         .padding(WindowInsets.statusBars.asPaddingValues())
         .fillMaxWidth()
@@ -99,7 +98,7 @@ fun TopAppBar(){
         .background(darkRed)
         .wrapContentSize(align = Alignment.Center)
     ){
-        Text(text = "VALORENT", fontSize = 35.sp, textAlign = TextAlign.Center, fontFamily = ValorentFont)
+        Text(text = text, fontSize = 35.sp, textAlign = TextAlign.Center, fontFamily = ValorentFont)
     }
 }
 

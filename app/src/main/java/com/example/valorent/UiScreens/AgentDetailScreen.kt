@@ -2,6 +2,8 @@ package com.example.valorent.UiScreens
 
 
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -21,6 +23,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -83,7 +89,7 @@ val data = viewModal.selectedAgent
         ) {
             items(data?.abilities!!){
                 abilities ->
-                viewModal.selectedAbility= data.abilities[0].description
+                //viewModal.selectedAbility= data.abilities[0].description
                 Column(modifier= Modifier.padding(end = 5.dp)
                     .clip(RoundedCornerShape(20.dp))
                     .clickable { viewModal.selectedAbility = abilities.description }
@@ -120,6 +126,10 @@ fun AbilityCard(name: String , image : String ){
 
 @Composable
 fun ImagePart(imgURL:String , name :String){
+    var isDisplayed by remember {
+        mutableStateOf(false)
+    }
+    val transitionX by animateFloatAsState(targetValue =  if (isDisplayed) 0f else -800f , animationSpec = tween(durationMillis = 500) )
     Box(){
         Box(modifier = Modifier
             .fillMaxWidth()
@@ -142,6 +152,6 @@ fun ImagePart(imgURL:String , name :String){
         )
 
         }
-        AsyncImage(model = imgURL , contentDescription =" " , alignment = Alignment.BottomCenter )
+        AsyncImage(model = imgURL , contentDescription =" " , alignment = Alignment.BottomCenter, onSuccess = {  isDisplayed = true  },  modifier =Modifier.graphicsLayer(translationX = transitionX) )
     }
 }
