@@ -1,6 +1,6 @@
-# [Your App Name] - A Modern Android Valorant Information App
+# ValorentApp - A Modern Android Valorant Information App
 
-This repository contains the source code for [ValorentApp], an Android application developed to demonstrate modern Android development practices while providing useful information for Valorant players. Valorent Api to display data on agents, weapons, and more.
+This repository contains the source code for ValorentApp, an Android application developed to demonstrate modern Android development practices while providing useful information for Valorant players. Valorent Api to display data on agents, weapons, and more.
 
 **Core Objectives & Features:**
 
@@ -17,4 +17,6 @@ This repository contains the source code for [ValorentApp], an Android applicati
     *   Hilt for DI 
     *   Navigation
     *   Animations
+
+    ## Screenshots
 
