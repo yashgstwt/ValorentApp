@@ -18,7 +18,6 @@ import com.example.valorent.ui.theme.valoBackground
 
 @Composable
 fun Loading () {
-
     val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.loading))
     Box(modifier = Modifier.fillMaxSize().background(valoBackground), contentAlignment = Alignment.Center ){
 

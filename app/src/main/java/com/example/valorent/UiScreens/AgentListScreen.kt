@@ -59,7 +59,7 @@ fun AgentListScreen ( viewModal: ValorentViewModal, navController: NavController
                         Text(text = agentApiState.error.toString(), fontSize = 25.sp , textAlign = TextAlign.Center )
                     }
                     AgentApiResponse.Loading ->{
-                   SplashScreen()
+                         SplashScreen()
                     }
                 }
             }

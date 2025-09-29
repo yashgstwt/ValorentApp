@@ -5,6 +5,4 @@ data class Ability(
     val displayIcon: String,
     val displayName: String,
     val slot: String
-) {
-
-}
+)

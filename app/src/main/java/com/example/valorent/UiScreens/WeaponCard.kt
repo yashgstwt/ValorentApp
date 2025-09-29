@@ -32,12 +32,11 @@ import com.example.valorent.ui.theme.valoBackground
 fun WeaponCard(Weapon : WeaponData, navController: NavController,viewModal: ValorentViewModal){
 
       Column(modifier = Modifier
-          .clip(RoundedCornerShape(10.dp))
           .padding(10.dp)
-          .height(200.dp)
+          .height(150.dp)
           .fillMaxWidth()
+          .clip(RoundedCornerShape(19.dp))
           .background(lightBlack)
-          .wrapContentSize(Alignment.Center)
           .clickable {
               navController.navigate(Screen.WeaponDetail.route)
               viewModal.selectedWeapon = Weapon
@@ -46,7 +45,7 @@ fun WeaponCard(Weapon : WeaponData, navController: NavController,viewModal: Valo
           verticalArrangement = Arrangement.Center
 
       ){
-          AsyncImage(model = Weapon.displayIcon  , contentDescription = "" , alignment = Alignment.BottomStart)
+          AsyncImage(model = Weapon.displayIcon  , contentDescription = "" , alignment = Alignment.BottomStart, modifier = Modifier.height(100.dp) )
           Spacer(modifier =Modifier.height(10.dp) )
           Text(text =Weapon.displayName  , fontSize = 35.sp , color = Color.White , modifier = Modifier.padding(start = 55.dp), fontFamily = ValorentFont)
 

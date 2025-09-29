@@ -28,7 +28,7 @@ class ValorentViewModal  @Inject constructor (private val repository: ValorentRe
 
     var selectedWeapon : WeaponData? by mutableStateOf(null)
 
-    var selectedAbility:String? by mutableStateOf(null)
+    var selectedAbility:String? by mutableStateOf("Please select the Ability to get description")
 
     var selectedWeaponSkin : Skin? by mutableStateOf(null)
     //state for list in home screen i.e agent / Weapon

@@ -49,7 +49,7 @@ import com.example.valorent.ui.theme.valoBackground
 import java.util.Locale
 
 @Composable
-fun AgentDetailScreen(viewModal: ValorentViewModal ){
+fun AgentDetailScreen(viewModal: ValorentViewModal){
 val data = viewModal.selectedAgent
     Column (modifier = Modifier
         .fillMaxSize()
@@ -99,7 +99,13 @@ val data = viewModal.selectedAgent
             }
         }
         Spacer(modifier = Modifier.size(10.dp))
-        Text(text = viewModal.selectedAbility.toString(),
+        Text(text = viewModal.selectedAbility.toString().let{
+            if (it.isEmpty()){
+                "Please select any ability to show description"
+            }else{
+                viewModal.selectedAbility!!
+            }
+        },
             fontSize = 20.sp ,
             fontStyle = FontStyle.Italic ,
             color = Color.White ,
@@ -114,10 +120,10 @@ fun AbilityCard(name: String , image : String ){
         .padding(5.dp)
     ){
         AsyncImage(model = image,
-            contentDescription =""
-            ,modifier = Modifier.size(100.dp).padding(5.dp) ,
+            contentDescription ="",
+            modifier = Modifier.size(100.dp).padding(5.dp).align(Alignment.CenterHorizontally) ,
             contentScale = ContentScale.Crop,
-            alignment = Alignment.Center
+            alignment = Alignment.Center,
         )
 
         Text(text = name , fontSize = 20.sp , color = Color.White, modifier = Modifier.padding(8.dp))

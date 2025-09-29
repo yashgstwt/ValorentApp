@@ -36,9 +36,9 @@ import com.example.valorent.ui.theme.valoBackground
 fun WeaponSkinCard(Skin : Skin, navController: NavController , viewModal: ValorentViewModal){
 
     Column(modifier = Modifier
-        .padding(10.dp)
+        .padding(18.dp)
         .clip(RoundedCornerShape(20.dp))
-        .height(200.dp)
+        .height(150.dp)
         .fillMaxWidth()
         .background(lightBlack)
         .wrapContentSize(Alignment.Center),
@@ -52,7 +52,7 @@ fun WeaponSkinCard(Skin : Skin, navController: NavController , viewModal: Valore
     ){
         AsyncImage(model =Skin.displayIcon  , contentDescription = "" , alignment = Alignment.BottomStart , onSuccess = {} )
         Spacer(modifier = Modifier.height(10.dp) )
-        Text(text = Skin.displayName ?: "g   " ,
+        Text(text = Skin.displayName,
             fontSize = 30.sp ,
             color = Color.White ,
             modifier = Modifier.padding(start = 55.dp).fillMaxWidth(),
@@ -67,7 +67,7 @@ fun WeaponSkinCard(Skin : Skin, navController: NavController , viewModal: Valore
 fun SkinListScreen(viewModal: ValorentViewModal, navController: NavController){
     Scaffold (
         topBar = { TopAppBar("SKINS") }){
-padding ->
+            padding ->
         LazyColumn(modifier = Modifier.padding(padding)
             .fillMaxSize()
             .background(valoBackground)) {

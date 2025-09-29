@@ -33,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -83,7 +84,7 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
                     .clip(RoundedCornerShape(bottomStart = 200.dp,))
                     .height(320.dp)
                     .background(darkRed)
-                // .wrapContentSize(Alignment.Center)
+
             ) {
                 Text(
                     text = viewModal.selectedWeapon?.displayName ?: "No Name",
@@ -96,8 +97,8 @@ fun WeaponDetail(viewModal: ValorentViewModal , navController: NavController) {
                 AsyncImage(
                     model = viewModal.selectedWeapon?.displayIcon,
                     contentDescription = " ",
-                    contentScale = ContentScale.Inside,
-                    modifier = Modifier.align(Alignment.Center).graphicsLayer(translationY = transitionY, translationX = 80f),
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxWidth(.95f).align(Alignment.Center).graphicsLayer(translationY = transitionY, translationX = 80f),
                     onSuccess = {  isDisplayed = true  },
                 )
             }

@@ -1,6 +1,7 @@
 package com.example.valorent.UiScreens
 
 import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
@@ -24,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shader
@@ -53,8 +55,11 @@ fun n(){
     animation = tween(durationMillis = 4000),
     repeatMode = RepeatMode.Reverse)
   )
-  val colors = arrayOf(Color.Black, Color.Transparent)
-  val gradint = Brush.linearGradient(   0f to Color.Transparent, 90f to Color.Black )
+  val colors = listOf(Color.Black, Color.Transparent)
+  val gradint = Brush
+    //.horizontalGradient(colors, startX = 0f , endX = 100f)
+    .linearGradient(colors , start = Offset.Zero , end = Offset.Infinite )
+  // .linearGradient(   0f to Color.Transparent, 2f to Color.Black, start = Offset.Zero , end = Offset.Infinite )
   Box {
     Box(modifier = Modifier
       .fillMaxWidth()
@@ -84,9 +89,10 @@ fun n(){
     )
     Box(modifier = Modifier
       .fillMaxWidth()
-      .clip(RoundedCornerShape(bottomStart = 200.dp,))
+
       .height(320.dp)
-      .background(gradint))
+      .background(brush = Brush.linearGradient( colors = listOf(Color.Transparent , Color.Black))).align(Alignment.BottomCenter)
+    )
 
   }
 }
