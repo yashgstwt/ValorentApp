@@ -19,4 +19,8 @@ This repository contains the source code for ValorentApp, an Android application
     *   Animations
 
     ## Screenshots
-
+![agentScreen](https://github.com/user-attachments/assets/9d6a2bb9-d270-438f-ad37-ea781f638613)
+![agentDetailScreen](https://github.com/user-attachments/assets/d0b440e5-d077-4b06-868a-0fed76f68642)
+![weponScreen](https://github.com/user-attachments/assets/e3e44bf1-9913-4687-856a-b7958dc65abd)
+![weponDetailScreen](https://github.com/user-attachments/assets/02b9e186-399a-4b48-b8ac-2f6036a64097)
+![weponSkinScreen](https://github.com/user-attachments/assets/49e378c4-59d3-42f1-b4d8-3bef27549316)
